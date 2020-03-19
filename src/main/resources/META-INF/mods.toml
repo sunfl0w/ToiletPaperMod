@@ -1,0 +1,52 @@
+modLoader="javafml"
+
+loaderVersion="[31,)"
+
+issueTrackerURL="https://github.com/sunfl0w/ToiletPaperMod/issues"
+
+logoFile="logo.png"
+
+[[mods]]
+
+modId="tpmod"
+
+version="1.0.0"
+
+displayName="Toilet Paper Mod"
+
+updateJSONURL="https://github.com/sunfl0w/ToiletPaperMod"
+
+displayURL="https://github.com/sunfl0w/ToiletPaperMod"
+
+credits="sunfl0w"
+
+authors="sunfl0w"
+
+
+description='''
+This mod adds throwable toilet paper to minecraft. This isn't really useful, but hoarding toilet paper in Minecraft is way better than in real life.
+You are now allowed to brag about the stacks of toilet paper you hoarded on your minecraft world. Stay save and healthy ;).
+'''
+
+
+
+
+
+[[dependencies.siegemod]]
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[31,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+    
+[[dependencies.siegemod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
