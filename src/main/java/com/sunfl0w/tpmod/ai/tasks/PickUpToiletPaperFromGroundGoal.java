@@ -8,6 +8,7 @@ import com.sunfl0w.tpmod.init.TPModItems;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class PickUpToiletPaperFromGroundGoal extends Goal {
@@ -31,6 +32,8 @@ public class PickUpToiletPaperFromGroundGoal extends Goal {
 			entity.getNavigator().tryMoveToXYZ((double) ((float) toiletPaperEntity.getPosition().getX()) + 0.5D, (double) (toiletPaperEntity.getPosition().getY() + 1),
 					(double) ((float) toiletPaperEntity.getPosition().getZ()) + 0.5D, 0.7f);
 			if (entity.getPosition().distanceSq(toiletPaperEntity.getPosition()) < 3.0f) {
+				//entity.setCanPickUpLoot(true);
+				entity.onItemPickup(toiletPaperEntity, toiletPaperEntity.getItem().getCount());
 				toiletPaperEntity.remove();
 				toiletPaperEntity = null;
 			}

@@ -3,6 +3,7 @@ package com.sunfl0w.tpmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.sunfl0w.tpmod.ai.tasks.GoToChestIfToiletPaperIsInItGoal;
 import com.sunfl0w.tpmod.ai.tasks.GoToPlayerIfHeHasToiletPaperInHandGoal;
 import com.sunfl0w.tpmod.ai.tasks.PickUpToiletPaperFromGroundGoal;
 import com.sunfl0w.tpmod.init.TPModItems;
@@ -40,7 +41,8 @@ public class TPMod {
 	public void villagerEntityAIOverride(EntityJoinWorldEvent event) {
 		if(event.getEntity() != null && event.getEntity() instanceof VillagerEntity) {
 			((VillagerEntity)event.getEntity()).goalSelector.addGoal(1, new PickUpToiletPaperFromGroundGoal((CreatureEntity) event.getEntity()));
-			((VillagerEntity)event.getEntity()).goalSelector.addGoal(1, new GoToPlayerIfHeHasToiletPaperInHandGoal((CreatureEntity) event.getEntity()));
+			((VillagerEntity)event.getEntity()).goalSelector.addGoal(2, new GoToPlayerIfHeHasToiletPaperInHandGoal((CreatureEntity) event.getEntity()));
+			((VillagerEntity)event.getEntity()).goalSelector.addGoal(3, new GoToChestIfToiletPaperIsInItGoal((CreatureEntity) event.getEntity()));
 		}
 	}
 }

@@ -31,7 +31,7 @@ public class GoToPlayerIfHeHasToiletPaperInHandGoal extends Goal {
 		} else {
 			entity.getNavigator().tryMoveToXYZ((double) ((float) playerEntity.getPosition().getX()) + 0.5D, (double) (playerEntity.getPosition().getY() + 1),
 					(double) ((float) playerEntity.getPosition().getZ()) + 0.5D, 0.7f);
-			if (entity.getPosition().distanceSq(playerEntity.getPosition()) < 2.0f) {
+			if (entity.getPosition().distanceSq(playerEntity.getPosition()) < 2.0f || !playerEntity.getHeldItemMainhand().getItem().equals(TPModItems.TOILET_PAPER.get())) {
 				playerEntity = null;
 			}
 		}
@@ -42,9 +42,7 @@ public class GoToPlayerIfHeHasToiletPaperInHandGoal extends Goal {
 		ArrayList<PlayerEntity> entities = (ArrayList<PlayerEntity>) entity.world.getEntitiesWithinAABB(PlayerEntity.class,
 				new AxisAlignedBB(entity.getPosition().getX() - 25, 0, entity.getPosition().getZ() - 25, entity.getPosition().getX() + 25, 255, entity.getPosition().getZ() + 25));
 		for (PlayerEntity entity : entities) {
-			TPMod.LOGGER.info(entity.getHeldItemMainhand());
 			if (entity.getHeldItemMainhand().getItem().equals(TPModItems.TOILET_PAPER.get())) {
-				TPMod.LOGGER.info("Found player with paper.");
 				playerEntitiesWithToiletPaper.add(entity);
 			}
 		}
