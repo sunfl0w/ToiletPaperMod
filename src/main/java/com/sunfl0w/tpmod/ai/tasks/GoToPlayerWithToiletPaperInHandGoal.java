@@ -3,7 +3,6 @@ package com.sunfl0w.tpmod.ai.tasks;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.sunfl0w.tpmod.TPMod;
 import com.sunfl0w.tpmod.init.TPModItems;
 
 import net.minecraft.entity.CreatureEntity;
@@ -11,12 +10,12 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class GoToPlayerIfHeHasToiletPaperInHandGoal extends Goal {
+public class GoToPlayerWithToiletPaperInHandGoal extends Goal {
 	private CreatureEntity entity;
 	private PlayerEntity playerEntity;
 	private Random random = new Random();
 	
-	public GoToPlayerIfHeHasToiletPaperInHandGoal(CreatureEntity entity) {
+	public GoToPlayerWithToiletPaperInHandGoal(CreatureEntity entity) {
 		this.entity = entity;
 	}
 

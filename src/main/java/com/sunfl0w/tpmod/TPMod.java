@@ -1,12 +1,13 @@
 package com.sunfl0w.tpmod;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import com.sunfl0w.tpmod.ai.tasks.AttackPlayerWithToiletPaperInHandGoal;
 import com.sunfl0w.tpmod.ai.tasks.GoToChestIfToiletPaperIsInItGoal;
-import com.sunfl0w.tpmod.ai.tasks.GoToPlayerIfHeHasToiletPaperInHandGoal;
+import com.sunfl0w.tpmod.ai.tasks.GoToPlayerWithToiletPaperInHandGoal;
 import com.sunfl0w.tpmod.ai.tasks.PickUpToiletPaperFromGroundGoal;
 import com.sunfl0w.tpmod.init.TPModItems;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
@@ -32,17 +33,22 @@ public class TPMod {
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	private void register() {
 		TPModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
-	
+
 	@SubscribeEvent
 	public void villagerEntityAIOverride(EntityJoinWorldEvent event) {
-		if(event.getEntity() != null && event.getEntity() instanceof VillagerEntity) {
-			((VillagerEntity)event.getEntity()).goalSelector.addGoal(1, new PickUpToiletPaperFromGroundGoal((CreatureEntity) event.getEntity()));
-			((VillagerEntity)event.getEntity()).goalSelector.addGoal(2, new GoToPlayerIfHeHasToiletPaperInHandGoal((CreatureEntity) event.getEntity()));
-			((VillagerEntity)event.getEntity()).goalSelector.addGoal(3, new GoToChestIfToiletPaperIsInItGoal((CreatureEntity) event.getEntity()));
+		if (event.getEntity() != null && event.getEntity() instanceof VillagerEntity) {
+			((VillagerEntity) event.getEntity()).goalSelector.addGoal(1,
+					new PickUpToiletPaperFromGroundGoal((CreatureEntity) event.getEntity()));
+			((VillagerEntity) event.getEntity()).goalSelector.addGoal(2,
+					new GoToPlayerWithToiletPaperInHandGoal((CreatureEntity) event.getEntity()));
+			((VillagerEntity) event.getEntity()).goalSelector.addGoal(3,
+					new GoToChestIfToiletPaperIsInItGoal((CreatureEntity) event.getEntity()));
+			((VillagerEntity) event.getEntity()).goalSelector.addGoal(3,
+					new AttackPlayerWithToiletPaperInHandGoal((CreatureEntity) event.getEntity()));
 		}
 	}
 }

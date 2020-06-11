@@ -10,7 +10,7 @@ logoFile="logo.png"
 
 modId="tpmod"
 
-version="1.1.0"
+version="1.1.1"
 
 displayName="Toilet Paper Mod"
 
@@ -33,7 +33,7 @@ You are now allowed to brag about the stacks of toilet paper you hoarded on your
 
 
 
-[[dependencies.siegemod]]
+[[dependencies.tpmod]]
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -45,7 +45,7 @@ You are now allowed to brag about the stacks of toilet paper you hoarded on your
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
     
-[[dependencies.siegemod]]
+[[dependencies.tpmod]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.15.2]"
